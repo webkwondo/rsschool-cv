@@ -18,6 +18,225 @@
   <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
+  <div class="page">
+    <div class="page__container container">
+      <div class="page__columns">
+        <div class="page__column page__column_type_main">
 
+          <header class="page__header header">
+            <nav class="header__nav nav">
+              <ul class="nav__list">
+                <li class="nav__item"><a class="nav__link" href="#contacts">Contacts</a></li>
+                <li class="nav__item"><a class="nav__link" href="#skills">Skills</a></li>
+                <li class="nav__item"><a class="nav__link" href="#experience">Experience</a></li>
+                <li class="nav__item"><a class="nav__link" href="#cases">Cases</a></li>
+              </ul>
+            </nav>
+
+            <h1 class="header__title">Hello! I’m Elena Markova!</h1>
+            <p class="header__description">I’m experienced frontend-developer, web-developer, formerly a web-designer. I build custom websites and provide design solutions for small- and middle-scaled web-projects. I like beautiful, user centered design, accessibility, clean and efficient code.</p>
+          </header>
+
+          <main class="page__main">
+            <section class="page__contacts contacts" id="contacts">
+              <h2 class="contacts__title">Contacts</h2>
+
+              <ul class="contacts__list">
+                <li class="contacts__item">t.me: <a href="https://t.me/webkwondo">@webkwondo</a></li>
+                <li class="contacts__item">Discord: webkwondo#7413</li>
+                <li class="contacts__item">GitHub: <a href="https://github.com/webkwondo">webkwondo</a></li>
+              </ul>
+            </section>
+
+            <section class="page__skills skills" id="skills">
+              <h2 class="skills__title">Skills</h2>
+
+              <ol class="skills__list">
+                <li class="skills__item"><span class="skills__item-text">HTML5, CSS3, SVG, JavaScript (+jQuery)</span></li>
+                <li class="skills__item"><span class="skills__item-text">JavaScript (vanilla ES5/ES6+), HTML5 API, jQuery (legacy), Node.js</span></li>
+                <li class="skills__item"><span class="skills__item-text">Valid, cross-browser, semantic html/css layout. Pixel Perfect</span></li>
+                <li class="skills__item"><span class="skills__item-text">BEM methodology</span></li>
+                <li class="skills__item"><span class="skills__item-text">Pug, Twig</span></li>
+                <li class="skills__item"><span class="skills__item-text">Basic PHP, MySQL</span></li>
+                <li class="skills__item"><span class="skills__item-text">Wordpress</span></li>
+                <li class="skills__item"><span class="skills__item-text">Bootstrap with customization</span></li>
+                <li class="skills__item"><span class="skills__item-text">LESS, SASS, prefer SCSS</span></li>
+                <li class="skills__item"><span class="skills__item-text">Command line, Git, SVN, Gulp, Webpack</span></li>
+                <li class="skills__item"><span class="skills__item-text">Web Performance</span></li>
+                <li class="skills__item"><span class="skills__item-text">Experience in SEO, SMM, content management</span></li>
+                <li class="skills__item"><span class="skills__item-text">Experienced in Adobe Photoshop, Figma</span></li>
+              </ol>
+            </section>
+
+            <section class="page__cases cases" id="cases">
+              <h2 class="cases__title">Projects I developed</h2>
+
+              <div class="cases__holder">
+
+                <div class="cases__col case">
+                  <h3 class="case__title">Frontend-development and working with Yandex Maps API</h3>
+
+                  <a class="case__link" href="https://webkwondo.com/p/yandex-maps/">
+                    <figure class="case__figure">
+                      <picture>
+                        <source type="image/webp"
+                          srcset="assets/img/yandex-maps.webp">
+                          <img class="case__img" src="assets/img/yandex-maps.jpg" alt="Yandex Maps API" width="450" height="250">
+                      </picture>
+                    </figure>
+                  </a>
+                </div>
+
+                <div class="cases__col case">
+                  <h3 class="case__title">Example of interactive forms chain</h3>
+
+                  <a class="case__link" href="https://webkwondo.com/p/forms-chain/">
+                    <figure class="case__figure">
+                      <picture>
+                        <source type="image/webp"
+                          srcset="assets/img/forms-chain.webp">
+                          <img class="case__img" src="assets/img/forms-chain.jpg" alt="Forms chain" width="450" height="250">
+                      </picture>
+                    </figure>
+                  </a>
+                </div>
+
+                <div class="cases__col case">
+                  <h3 class="case__title">Insurance company web-site</h3>
+
+                  <a class="case__link" href="https://webkwondo.com/p/landing-insurance/">
+                    <figure class="case__figure">
+                      <picture>
+                        <source type="image/webp"
+                          srcset="assets/img/landing-insurance.webp">
+                          <img class="case__img" src="assets/img/landing-insurance.jpg" alt="Insurance company web-site" width="450" height="250">
+                      </picture>
+                    </figure>
+                  </a>
+                </div>
+
+              </div>
+            </section>
+
+            <section class="page__example example">
+              <h2>Example code</h2>
+
+              <code class="example__code">
+                export const performCalculations = async () => {
+                  const fileName = 'worker.js';
+                  const filePath = join(__dirname, fileName);
+                  const cpuCount = cpus().length;
+                  let number = 10;
+
+                  const createWorker = (data) => {
+                    return new Promise((resolve, reject) => {
+                      const worker = new Worker(filePath, {
+                        workerData: data
+                      });
+
+                      worker.on('message', (msg) => {
+                        if (typeof msg === 'number') {
+                          resolve({status: 'resolved', data: msg});
+                        } else {
+                          resolve({status: 'error', data: null});
+                        }
+                      });
+
+                      worker.on('error', (msg) => {
+                        reject({status: 'error', data: null});
+                      });
+
+                      worker.on('exit', (code) => {
+                        if (code !== 0) {
+                          reject({status: 'error', data: null});
+                        }
+                      });
+                    });
+                  };
+
+                  const promises = [];
+
+                  for (let i = 0; i < cpuCount; i++, number++) {
+                    promises.push(createWorker(number));
+                  }
+
+                  const results = (await Promise.allSettled(promises)).map((result) => {
+                    if (result.status === 'fulfilled') {
+                      return result.value;
+                    }
+
+                    if (result.status === 'rejected') {
+                      return result.reason;
+                    }
+                  });
+
+                  return results;
+                };
+
+                const res = await performCalculations();
+              </code>
+            </section>
+          </main>
+
+          <footer class="page__footer footer">
+            <ul class="footer__list">
+              <li class="footer__item"><a class="footer__link" href="https://github.com/webkwondo">Github</a></li>
+              <li class="footer__item"><span class="footer__text">2022</span></li>
+              <li class="footer__item">
+                <a class="footer__link" href="https://rs.school/js/" target="_blank">
+                  <img class="footer_img" src="assets/svg/rs-school-js-logo.svg" width="86" height="32" alt="RS School logo">
+                </a>
+              </li>
+            </ul>
+          </footer>
+
+        </div>
+
+        <aside class="page__column page__column_type_secondary">
+          <div class="aside__logo logo">
+            <figure class="logo__figure">
+              <picture>
+                <source type="image/webp"
+                  srcset="assets/img/me.webp 1x, assets/img/me@2x.webp 2x">
+                <img class="logo__img" src="assets/img/me.jpg"
+                  srcset="assets/img/me@2x.jpg 2x" alt="Elena's photo">
+              </picture>
+              <figcaption class="logo__figcaption"><span>Elena Markova</span><br>Frontend-developer,<br> web-developer</figcaption>
+            </figure>
+          </div>
+
+          <section class="aside__experience experience" id="experience">
+            <h2 class="experience__title">Experience</h2>
+
+            <ul class="experience__list">
+              <li>Working with outsourcing companies</li>
+              <li>Freelancing</li>
+              <li>Project-management</li>
+            </ul>
+          </section>
+
+          <section class="aside__education education">
+            <h2 class="education__title">Education</h2>
+
+            <ul class="education__list">
+              <li>University: Financial University, Economics major</li>
+              <li>HTML Academy full frontend-developer course</li>
+              <li>CS50 course in Computer Science</li>
+            </ul>
+          </section>
+
+          <section class="aside__languages languages">
+            <h2 class="languages__title">Languages</h2>
+
+            <ul class="languages__list">
+              <li>English C1 (Advanced)</li>
+              <li>French A1 (Beginner)</li>
+            </ul>
+          </section>
+        </aside>
+      </div>
+
+    </div>
+  </div>
 </body>
 </html>
