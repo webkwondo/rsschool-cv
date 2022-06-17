@@ -385,7 +385,7 @@ p {
 }
 
 .case__link:hover .case__figure picture::after {
-  background-color: var(-color-transparent);
+  background-color: var(--color-transparent);
 }
 
 .logo__figure {
